@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -20,7 +21,6 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         movement = new Vector3(0,0,-1);
-        Debug.Log("213");
     }
 
     void FixedUpdate()
@@ -41,6 +41,12 @@ public class EnemyController : MonoBehaviour
         {
             rotAmount = Random.Range(90, 270);
             transform.Rotate(rvec, rotAmount);
+        }
+
+        if(col.collider.name == "Player")
+        {
+            SceneManager.LoadScene("SampleScene");
+            Debug.Log("player");
         }
     } 
 
