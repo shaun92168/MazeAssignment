@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Home))
         {
+            Cursor.lockState = CursorLockMode.Locked; 
             SceneManager.LoadScene("SampleScene");
+            Time.timeScale = 1;
         }
 
         if(Input.GetKeyDown(KeyCode.Space))
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
         if(col.name == "END")
         {
             WinScreen.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
         }
         
         Debug.Log(col.name);
