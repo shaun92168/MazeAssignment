@@ -50,6 +50,15 @@ public class EnemyController : MonoBehaviour
         }
     } 
 
+    void OnCollisionStay(Collision col)
+    {
+        if(col.collider.name == "Quad4" || col.collider.name == "Quad1" || col.collider.name == "Quad2" || col.collider.name == "Quad3")
+        {
+            rotAmount = Random.Range(90, 270);
+            transform.Rotate(rvec, rotAmount);
+        }
+    } 
+
     private Vector3 RandomVector(float min, float max) {
         var x = Random.Range(min, max);
         var y = Random.Range(min, max);

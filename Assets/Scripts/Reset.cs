@@ -19,6 +19,8 @@ public class Reset : MonoBehaviour
 
     public void resetScene()
     {
+        Cursor.lockState = CursorLockMode.Locked; 
         SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1;
     }
 }
