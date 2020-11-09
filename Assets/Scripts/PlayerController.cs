@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 12f;
     public GameObject[] Walls;
     public Text toggleText;
-    private bool toggleStatus;
+    private bool toggleStatus = true;
     private IEnumerator coroutine;
 
     void Start()
@@ -60,11 +60,12 @@ public class PlayerController : MonoBehaviour
     {
         foreach (GameObject wall in Walls)
         {
-            wall.gameObject.GetComponent<Collider>().enabled = !wall.gameObject.GetComponent<Collider>().enabled;
-            toggleStatus = wall.gameObject.GetComponent<Collider>().enabled;
+            Physics.IgnoreCollision(wall.GetComponent<Collider>(), GetComponent<Collider>(), toggleStatus);
         }
 
-        if(toggleStatus)
+        toggleStatus = !toggleStatus;
+
+        if (toggleStatus)
         {
             toggleText.text = "Wall Collision Enabled";
         } else
