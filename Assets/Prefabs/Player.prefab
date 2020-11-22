@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 2922525608956061883}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 1021721116}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,10 +245,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2922525610163302616}
+  Enemy: {fileID: 3097789170295456487, guid: 0c46565b27ef3c340bdc7dc3023aec6f, type: 3}
   WinScreen: {fileID: 0}
+  Ball: {fileID: 7587279421953514839, guid: 6b85ec19f818e854aab3a95696ad2cda, type: 3}
   speed: 2
+  ballSpeed: 100
   Walls: []
   toggleText: {fileID: 0}
+  scoreText: {fileID: 0}
+  score: 0
 --- !u!54 &1021721116
 Rigidbody:
   m_ObjectHideFlags: 0
