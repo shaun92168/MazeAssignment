@@ -7,18 +7,27 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
+    public GameObject Enemy;
     public GameObject WinScreen;
+    public GameObject Ball;
+    public Transform BallSpawn;
     public float speed = 12f;
+    public float ballSpeed = 200;
     public GameObject[] Walls;
     public Text toggleText;
     private bool toggleStatus = true;
+    public Text scoreText;
+    public int score;
     private IEnumerator coroutine;
 
     void Start()
     {
+        GameObject enemy = Instantiate(Enemy, Enemy.transform.position, Enemy.transform.rotation);
         toggleText.enabled = false;
+        scoreText.enabled = true;
         Walls = GameObject.FindGameObjectsWithTag("Walls");
         WinScreen.SetActive(false);
+        score = 0;
     }
 
     void Update()
@@ -41,6 +50,14 @@ public class PlayerController : MonoBehaviour
         {
             ToggleWalls();
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            GameObject thrownBall = Instantiate(Ball, BallSpawn.position, BallSpawn.rotation);
+            thrownBall.GetComponent<Rigidbody>().velocity = thrownBall.transform.forward * ballSpeed;
+        }
+
+        scoreText.text = "Score: " + score;
 
         if (this.gameObject.transform.position.y != 0.27)
         {
