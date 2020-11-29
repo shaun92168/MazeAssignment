@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Enemy;
     public GameObject WinScreen;
     public GameObject Ball;
+    public Transform BallSpawn;
     public float speed = 12f;
     public float ballSpeed = 200;
     public GameObject[] Walls;
@@ -52,8 +53,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            GameObject thrownBall = Instantiate(Ball, new Vector3(this.transform.position.x, this.transform.position.y + 0.1f, this.transform.position.z), this.transform.rotation);
-            thrownBall.GetComponent<Rigidbody>().AddForce(this.transform.forward * speed * ballSpeed);
+            GameObject thrownBall = Instantiate(Ball, BallSpawn.position, BallSpawn.rotation);
+            thrownBall.GetComponent<Rigidbody>().velocity = thrownBall.transform.forward * ballSpeed;
         }
 
         scoreText.text = "Score: " + score;
