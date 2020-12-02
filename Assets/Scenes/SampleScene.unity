@@ -4694,6 +4694,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650586614}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &664596700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1947058742235354344, guid: 0cacdafb34395a342b6e619e76663bd6, type: 3}
+  m_PrefabInstance: {fileID: 6324459765620647656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &671390713
 GameObject:
   m_ObjectHideFlags: 0
@@ -10157,6 +10162,9 @@ MonoBehaviour:
   Quad2: {fileID: 9035715006744038462}
   Quad3: {fileID: 9035715006744038461}
   Quad4: {fileID: 9035715006744038460}
+  Floor: {fileID: 1801704036}
+  Gun: {fileID: 664596700}
+  Ball: {fileID: 7587279421953514839, guid: 6b85ec19f818e854aab3a95696ad2cda, type: 3}
   MorningSkybox: {fileID: 2100000, guid: 85cf0b004bc4a654b9e501efcce47902, type: 2}
   NightSkybox: {fileID: 2100000, guid: d4454f71d85928744be7771e2143dab7, type: 2}
 --- !u!4 &1310734641
