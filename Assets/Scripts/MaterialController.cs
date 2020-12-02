@@ -12,16 +12,19 @@ public class MaterialController : MonoBehaviour
     public GameObject Floor;
     public GameObject Gun;
     public GameObject Ball;
+    public GameObject Fog;
     public Material MorningSkybox;
     public Material NightSkybox;
 
     private bool isMorning;
+    private bool hasFog;
 
     // Start is called before the first frame update
     void Start()
     {
         morning();
         isMorning = true;
+        Fog.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class MaterialController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if(isMorning)
+            if (isMorning)
             {
                 night();
             }
@@ -38,6 +41,19 @@ public class MaterialController : MonoBehaviour
                 morning();
             }
             isMorning = !isMorning;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (hasFog)
+            {
+                Fog.SetActive(false);
+            }
+            else
+            {
+                Fog.SetActive(true);
+            }
+            hasFog = !hasFog;
         }
     }
 
