@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Top
-  m_Shader: {fileID: 4800000, guid: e556c7a13404ac046ba4979509d05a6e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 880747089571e2a4096dbb92c95d9b8e, type: 3}
   m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses:
   - DistortionVectors
@@ -157,10 +157,13 @@ Material:
     - _AlphaCutoffShadow: 0.5
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
-    - _Ambient: 0.15
+    - _Ambient: 0.6
     - _Anisotropy: 0
     - _BlendMode: 0
     - _BumpScale: 1
+    - _CenterX: 0.25
+    - _CenterY: 0.25
+    - _CircleRadius: 3
     - _CoatMask: 0
     - _CullMode: 2
     - _CullModeForward: 2
@@ -231,9 +234,12 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _Parallax: 0.02
+    - _Radius: 0.1
     - _ReceivesSSR: 1
     - _RefractionModel: 0
+    - _RingSize: 1
     - _SSRefractionProjectionModel: 0
+    - _Sharpness: 1
     - _Shininess: 1
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 0.5
@@ -281,10 +287,12 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _AmbColor: {r: 1, g: 1, b: 1, a: 1}
+    - _AmbColor: {r: 0.9811321, g: 0, b: 0, a: 1}
     - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
+    - _CharacterPosition: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _ColorTin: {r: 0, g: 0, b: 0, a: 0}
     - _DifColor: {r: 1, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}

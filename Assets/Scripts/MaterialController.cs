@@ -59,27 +59,27 @@ public class MaterialController : MonoBehaviour
 
     private void night()
     {
-        Quad.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0);
-        Quad1.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0);
-        Quad2.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.2f);
-        Quad3.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.4f);
-        Quad4.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.4f);
-        Floor.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0f);
-        Gun.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0f);
-        Ball.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0f);
+        Quad.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
+        Quad1.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
+        Quad2.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
+        Quad3.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
+        Quad4.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
+        Floor.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
+        Gun.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
+        Ball.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
         RenderSettings.skybox = NightSkybox;
     }
 
     private void morning()
     {
-        Quad.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.15f);
-        Quad1.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.3f);
-        Quad2.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.5f);
-        Quad3.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.8f);
-        Quad4.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.8f);
-        Floor.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.3f);
-        Gun.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.2f);
-        Ball.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.2f);
+        Quad.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
+        Quad1.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
+        Quad2.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
+        Quad3.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
+        Quad4.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
+        Floor.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
+        Gun.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
+        Ball.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
         RenderSettings.skybox = MorningSkybox;
     }
 }

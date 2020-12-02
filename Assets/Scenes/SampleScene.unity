@@ -17372,6 +17372,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walls
       objectReference: {fileID: 0}
+    - target: {fileID: 9035715005775131399, guid: 7f1fed30c7bfbeb40bca13922d62e02a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9035715005776919671, guid: 7f1fed30c7bfbeb40bca13922d62e02a, type: 3}
       propertyPath: m_TagString
       value: Untagged

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wall2
-  m_Shader: {fileID: 4800000, guid: e556c7a13404ac046ba4979509d05a6e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 880747089571e2a4096dbb92c95d9b8e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -60,8 +60,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Ambient: 0.5
+    - _Ambient: 0.6
     - _BumpScale: 1
+    - _CenterX: 0.25
+    - _CenterY: 0.25
+    - _CircleRadius: 3
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _Diffuse: 1
@@ -74,6 +77,9 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Radius: 0.1
+    - _RingSize: 1
+    - _Sharpness: 1
     - _Shininess: 1
     - _SmoothnessTextureChannel: 0
     - _Spec: 0
@@ -83,7 +89,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AmbColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CharacterPosition: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorTin: {r: 0, g: 0, b: 0, a: 0}
     - _DifColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmiColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
