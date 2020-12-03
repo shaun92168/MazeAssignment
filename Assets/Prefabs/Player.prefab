@@ -430,8 +430,9 @@ MonoBehaviour:
   Walls: []
   toggleText: {fileID: 0}
   scoreText: {fileID: 0}
-  score: 0
   escMenu: {fileID: 0}
+  score: 0
+  enemyLives: 0
 --- !u!54 &1021721116
 Rigidbody:
   m_ObjectHideFlags: 0

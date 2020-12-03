@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         if (pCtrl == null)
         {
             DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(escMenu);
             pCtrl = this;
             pCtrl.score = 0;
             pCtrl.enemyLives = 3;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        escMenu.enabled = false;
         this.transform.position = pCtrl.playerPos;
         this.transform.rotation = pCtrl.playerRot;
         enemy = Instantiate(Enemy, pCtrl.enemyPos, pCtrl.enemyRot);
@@ -89,11 +91,11 @@ public class PlayerController : MonoBehaviour
             if (paused)
             {
                 Time.timeScale = 1;
-                escMenu.gameObject.SetActive(false);
+                escMenu.enabled = false;
                 Cursor.lockState = CursorLockMode.Locked;
             } else {
                 Time.timeScale = 0;
-                escMenu.gameObject.SetActive(true);
+                escMenu.enabled = true;
                 Cursor.lockState = CursorLockMode.None;
             }
             paused = !paused;
@@ -130,6 +132,8 @@ public class PlayerController : MonoBehaviour
         if (col.name == "DoorB")
         {
             Debug.Log("Enter Pong");
+            this.transform.position = new Vector3(-13.72f, 0.27f, -13.53f);
+            SaveState();
             SceneManager.LoadScene("PongAI", LoadSceneMode.Single);
         }
 
