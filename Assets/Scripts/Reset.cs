@@ -2,25 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System;
 
 public class Reset : MonoBehaviour
 {
-    // Start is called before the first frame update
+    PlayerController PlayerController;
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PlayerController = FindObjectOfType<PlayerController>();
     }
 
     public void resetScene()
     {
-        Cursor.lockState = CursorLockMode.Locked; 
-        SceneManager.LoadScene("SampleScene");
+        Cursor.lockState = CursorLockMode.Locked;
+        Destroy(PlayerController.scoreText);
+        Destroy(PlayerController.toggleText);
+        try
+        {
+            File.Delete(Application.persistentDataPath + "/mazeSave.dat");
+        } catch (Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+        SceneManager.LoadScene("Maze");
         Time.timeScale = 1;
     }
 }

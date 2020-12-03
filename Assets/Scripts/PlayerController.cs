@@ -24,13 +24,12 @@ public class PlayerController : MonoBehaviour
     public Canvas escMenu;
     private bool paused = false;
     private IEnumerator coroutine;
-    private GameObject PongEntrance;
 
     public static PlayerController pCtrl;
-    private Vector3 playerPos;
-    private Quaternion playerRot;
-    private Vector3 enemyPos;
-    private Quaternion enemyRot;
+    public Vector3 playerPos;
+    public Quaternion playerRot;
+    public Vector3 enemyPos;
+    public Quaternion enemyRot;
     public int score;
     public int enemyLives;
     const string fileName = "/mazeSave.dat";
@@ -56,12 +55,11 @@ public class PlayerController : MonoBehaviour
         this.transform.rotation = pCtrl.playerRot;
         enemy = Instantiate(Enemy, pCtrl.enemyPos, pCtrl.enemyRot);
         enemy.GetComponent<EnemyController>().lives = pCtrl.enemyLives;
-        DontDestroyChildOnLoad(toggleText);
-        DontDestroyChildOnLoad(scoreText);
+        //DontDestroyChildOnLoad(toggleText);
+        //DontDestroyChildOnLoad(scoreText);
         toggleText.enabled = false;
         scoreText.enabled = true;
         Walls = GameObject.FindGameObjectsWithTag("Walls");
-        PongEntrance = GameObject.FindGameObjectWithTag("Pong");
         WinScreen.SetActive(false);
     }
 
