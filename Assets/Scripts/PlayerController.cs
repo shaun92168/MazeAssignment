@@ -39,8 +39,6 @@ public class PlayerController : MonoBehaviour
     {
         if (pCtrl == null)
         {
-            DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(escMenu);
             pCtrl = this;
             pCtrl.score = 0;
             pCtrl.enemyLives = 3;
@@ -58,11 +56,25 @@ public class PlayerController : MonoBehaviour
         this.transform.rotation = pCtrl.playerRot;
         enemy = Instantiate(Enemy, pCtrl.enemyPos, pCtrl.enemyRot);
         enemy.GetComponent<EnemyController>().lives = pCtrl.enemyLives;
+        DontDestroyChildOnLoad(toggleText);
+        DontDestroyChildOnLoad(scoreText);
         toggleText.enabled = false;
         scoreText.enabled = true;
         Walls = GameObject.FindGameObjectsWithTag("Walls");
         PongEntrance = GameObject.FindGameObjectWithTag("Pong");
         WinScreen.SetActive(false);
+    }
+
+    public static void DontDestroyChildOnLoad(Text child)
+    {
+        Transform parentTransform = child.transform;
+        
+        while( parentTransform.parent != null)
+        {
+            parentTransform = parentTransform.parent;
+        }
+
+        GameObject.DontDestroyOnLoad(parentTransform.gameObject);
     }
 
     void Update()
@@ -133,6 +145,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Enter Pong");
             this.transform.position = new Vector3(-13.72f, 0.27f, -13.53f);
+            toggleText.enabled = false;
+            scoreText.enabled = false;
             SaveState();
             SceneManager.LoadScene("PongAI", LoadSceneMode.Single);
         }

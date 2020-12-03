@@ -7,6 +7,8 @@ TagManager:
   - Walls
   - Enemy
   - Pong
+  - ScoreText
+  - ToggleText
   layers:
   - Default
   - TransparentFX
