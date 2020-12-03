@@ -67,6 +67,7 @@ public class MaterialController : MonoBehaviour
         Floor.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
         Gun.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
         Ball.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.6f);
+        Fog.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 0.7f);
         RenderSettings.skybox = NightSkybox;
     }
 
@@ -80,6 +81,7 @@ public class MaterialController : MonoBehaviour
         Floor.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
         Gun.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
         Ball.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
+        Fog.GetComponent<Renderer>().sharedMaterial.SetFloat("_Ambient", 1f);
         RenderSettings.skybox = MorningSkybox;
     }
 }

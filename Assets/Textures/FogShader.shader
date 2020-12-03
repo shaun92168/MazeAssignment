@@ -15,6 +15,10 @@
         _ScrollDirY("Scroll along Y", Range(-1., 1.)) = 1.
         _Speed("Speed", float) = 1.
         _Distance("Fading distance", Range(1., 10.)) = 1.
+
+        [Header(Ambient)]
+        _Ambient("Intensity", Range(0., 1.)) = 0.1
+        _AmbColor("Color", color) = (1., 1., 1., 1.)
     }
 
         SubShader
@@ -32,6 +36,10 @@
 
                 #include "UnityCG.cginc"
 
+                //Ambient
+                fixed _Ambient;
+                fixed4 _AmbColor;
+
                 struct v2f {
                     float4 pos : SV_POSITION;
                     fixed4 vertCol : COLOR0;
@@ -48,7 +56,7 @@
                     o.pos = UnityObjectToClipPos(v.vertex);
                     o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
                     o.uv2 = v.texcoord;
-                    o.vertCol = v.color;
+                    o.vertCol = _Ambient * _AmbColor;
                     return o;
                 }
 
