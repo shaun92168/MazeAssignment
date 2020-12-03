@@ -39,20 +39,31 @@ public class PlayerController : MonoBehaviour
         if (pCtrl == null)
         {
             pCtrl = this;
-            pCtrl.score = 0;
-            pCtrl.enemyLives = 3;
-            pCtrl.playerPos = this.transform.position;
-            pCtrl.playerRot = this.transform.rotation;
-            pCtrl.enemyPos = Enemy.transform.position;
-            pCtrl.enemyRot = Enemy.transform.rotation;
+            //pCtrl.score = 0;
+            //pCtrl.enemyLives = 3;
+            //pCtrl.playerPos = this.transform.position;
+            //pCtrl.playerRot = this.transform.rotation;
+            //pCtrl.enemyPos = Enemy.transform.position;
+            //pCtrl.enemyRot = Enemy.transform.rotation;
             LoadState();
+            Debug.Log("Awake Current Pos: " + this.transform.position);
+            Debug.Log("Save Pos: " + pCtrl.playerPos);
+            Debug.Log("Loaded State");
+        } else
+        {
+            Debug.Log("pCtrl not null");
         }
     }
     void Start()
     {
+        if (pCtrl.playerPos != Vector3.zero)
+        {
+            Debug.Log("Save Found -> Loading Save");
+            this.transform.position = pCtrl.playerPos;
+            this.transform.rotation = pCtrl.playerRot;
+        }
+        Debug.Log("Start Current Pos: " + this.transform.position);
         escMenu.enabled = false;
-        this.transform.position = pCtrl.playerPos;
-        this.transform.rotation = pCtrl.playerRot;
         enemy = Instantiate(Enemy, pCtrl.enemyPos, pCtrl.enemyRot);
         enemy.GetComponent<EnemyController>().lives = pCtrl.enemyLives;
         //DontDestroyChildOnLoad(toggleText);

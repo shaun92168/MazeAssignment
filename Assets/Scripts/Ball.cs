@@ -50,7 +50,6 @@ public class Ball : MonoBehaviour
             winnerText.enabled = true;
             playAgain.gameObject.SetActive(true);
             returnToMenu.gameObject.SetActive(true);
-            //Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
     }
