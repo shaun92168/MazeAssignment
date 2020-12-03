@@ -21,7 +21,6 @@ public class EnemyController : MonoBehaviour
         // rb = GetComponent<Rigidbody>();
         Player = FindObjectOfType<PlayerController>();
         rvec = new Vector3(0,1,0);
-        lives = 3;
         movement = new Vector3(0, 0, -1);
     }
 
@@ -90,5 +89,10 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(WaitCoroutine());
         movement = new Vector3(0, 0, -1);
         lives = 3;
+    }
+
+    public int getLives()
+    {
+        return this.lives;
     }
 }

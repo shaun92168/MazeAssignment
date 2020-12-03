@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
     public GameObject Enemy;
+    private GameObject enemy;
     public GameObject WinScreen;
     public GameObject Ball;
     public Transform BallSpawn;
@@ -20,7 +21,6 @@ public class PlayerController : MonoBehaviour
     public Text toggleText;
     private bool toggleStatus = true;
     public Text scoreText;
-    public int score;
     public Canvas escMenu;
     private bool paused = false;
     private IEnumerator coroutine;
@@ -28,8 +28,11 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController pCtrl;
     private Vector3 playerPos;
+    private Quaternion playerRot;
     private Vector3 enemyPos;
-    private int playerScore;
+    private Quaternion enemyRot;
+    public int score;
+    public int enemyLives;
     const string fileName = "/mazeSave.dat";
 
     private void Awake()
@@ -39,12 +42,20 @@ public class PlayerController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             pCtrl = this;
             pCtrl.score = 0;
+            pCtrl.enemyLives = 3;
+            pCtrl.playerPos = this.transform.position;
+            pCtrl.playerRot = this.transform.rotation;
+            pCtrl.enemyPos = Enemy.transform.position;
+            pCtrl.enemyRot = Enemy.transform.rotation;
             LoadState();
         }
     }
     void Start()
     {
-        GameObject enemy = Instantiate(Enemy, Enemy.transform.position, Enemy.transform.rotation);
+        this.transform.position = pCtrl.playerPos;
+        this.transform.rotation = pCtrl.playerRot;
+        enemy = Instantiate(Enemy, pCtrl.enemyPos, pCtrl.enemyRot);
+        enemy.GetComponent<EnemyController>().lives = pCtrl.enemyLives;
         toggleText.enabled = false;
         scoreText.enabled = true;
         Walls = GameObject.FindGameObjectsWithTag("Walls");
@@ -163,15 +174,50 @@ public class PlayerController : MonoBehaviour
             GameData data = (GameData)bf.Deserialize(fs);
             fs.Close();
             pCtrl.score = data.score;
+            pCtrl.enemyLives = data.enemyLives;
+            pCtrl.playerPos[0] = data.playerPos[0];
+            pCtrl.playerPos[1] = data.playerPos[1];
+            pCtrl.playerPos[2] = data.playerPos[2];
+            pCtrl.playerRot[0] = data.playerRot[0];
+            pCtrl.playerRot[1] = data.playerRot[1];
+            pCtrl.playerRot[2] = data.playerRot[2];
+            pCtrl.playerRot[3] = data.playerRot[3];
+            pCtrl.enemyPos[0] = data.enemyPos[0];
+            pCtrl.enemyPos[1] = data.enemyPos[1];
+            pCtrl.enemyPos[2] = data.enemyPos[2];
+            pCtrl.enemyRot[0] = data.enemyRot[0];
+            pCtrl.enemyRot[1] = data.enemyRot[1];
+            pCtrl.enemyRot[2] = data.enemyRot[2];
+            pCtrl.enemyRot[3] = data.enemyRot[3];
         }
     }
 
     public void SaveState()
     {
+        pCtrl.playerPos = this.transform.position;
+        pCtrl.playerRot = this.transform.rotation;
+        pCtrl.enemyPos = enemy.transform.position;
+        pCtrl.enemyRot = enemy.transform.rotation;
+        pCtrl.enemyLives = enemy.GetComponent<EnemyController>().getLives();
         BinaryFormatter bf = new BinaryFormatter();
         FileStream fs = File.Open(Application.persistentDataPath + fileName, FileMode.OpenOrCreate);
         GameData data = new GameData();
         data.score = pCtrl.score;
+        data.enemyLives = pCtrl.enemyLives;
+        data.playerPos[0] = pCtrl.playerPos[0];
+        data.playerPos[1] = pCtrl.playerPos[1];
+        data.playerPos[2] = pCtrl.playerPos[2];
+        data.playerRot[0] = pCtrl.playerRot[0];
+        data.playerRot[1] = pCtrl.playerRot[1];
+        data.playerRot[2] = pCtrl.playerRot[2];
+        data.playerRot[3] = pCtrl.playerRot[3];
+        data.enemyPos[0] = pCtrl.enemyPos[0];
+        data.enemyPos[1] = pCtrl.enemyPos[1];
+        data.enemyPos[2] = pCtrl.enemyPos[2];
+        data.enemyRot[0] = pCtrl.enemyRot[0];
+        data.enemyRot[1] = pCtrl.enemyRot[1];
+        data.enemyRot[2] = pCtrl.enemyRot[2];
+        data.enemyRot[3] = pCtrl.enemyRot[3];
         bf.Serialize(fs, data);
         fs.Close();
     }
@@ -181,4 +227,9 @@ public class PlayerController : MonoBehaviour
 class GameData
 {
     public int score;
+    public int enemyLives;
+    public float[] playerPos = new float[3];
+    public float[] playerRot = new float[4];
+    public float[] enemyPos = new float[3];
+    public float[] enemyRot = new float[4];
 }
