@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public Text scoreText;
     public int score;
     private IEnumerator coroutine;
+    private GameObject PongEntrance;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
         toggleText.enabled = false;
         scoreText.enabled = true;
         Walls = GameObject.FindGameObjectsWithTag("Walls");
+        PongEntrance = GameObject.FindGameObjectWithTag("Pong");
         WinScreen.SetActive(false);
         score = 0;
     }
@@ -72,6 +74,12 @@ public class PlayerController : MonoBehaviour
             WinScreen.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
+        }
+
+        if(col.name == "DoorB")
+        {
+            Debug.Log("Enter Pong");
+            SceneManager.LoadScene("PongAI", LoadSceneMode.Single);
         }
         
         Debug.Log(col.name);
