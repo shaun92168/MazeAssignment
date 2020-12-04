@@ -431,6 +431,11 @@ MonoBehaviour:
   toggleText: {fileID: 0}
   scoreText: {fileID: 0}
   escMenu: {fileID: 0}
+  Reset: {fileID: 0}
+  playerPos: {x: 0, y: 0, z: 0}
+  playerRot: {x: 0, y: 0, z: 0, w: 0}
+  enemyPos: {x: 0, y: 0, z: 0}
+  enemyRot: {x: 0, y: 0, z: 0, w: 0}
   score: 0
   enemyLives: 0
 --- !u!54 &1021721116

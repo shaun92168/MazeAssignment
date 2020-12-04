@@ -6733,9 +6733,10 @@ GameObject:
   - component: {fileID: 898496645}
   - component: {fileID: 898496644}
   - component: {fileID: 898496647}
+  - component: {fileID: 898496648}
   m_Layer: 0
   m_Name: END
-  m_TagString: Untagged
+  m_TagString: Reset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6830,6 +6831,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.96000004, y: 0.5027344, z: 0}
   m_Center: {x: 0.48000002, y: -0.2513672, z: 0}
+--- !u!114 &898496648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898496643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75677252913707044871cce7379d6725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &900894080
 GameObject:
   m_ObjectHideFlags: 0
@@ -16706,10 +16719,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8999406768297848102, guid: 0cacdafb34395a342b6e619e76663bd6, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cacdafb34395a342b6e619e76663bd6, type: 3}
 --- !u!1001 &9035715006744038459

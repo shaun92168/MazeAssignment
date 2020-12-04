@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private int randomSpawn;
 
     public static PlayerController pCtrl;
+    public GameObject Reset;
     public Vector3 playerPos;
     public Quaternion playerRot;
     public Vector3 enemyPos;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        Reset = GameObject.FindGameObjectWithTag("Reset");
         if (pCtrl.playerPos != Vector3.zero)
         {
             Debug.Log("Save Found -> Loading Save");
@@ -76,6 +78,14 @@ public class PlayerController : MonoBehaviour
         scoreText.enabled = true;
         Walls = GameObject.FindGameObjectsWithTag("Walls");
         WinScreen.SetActive(false);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Reset.GetComponent<Reset>().resetScene();
+        }
     }
 
     public IEnumerator WaitForRespawn()
@@ -180,6 +190,8 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(col.name);
     }
+
+    
 
     void ToggleWalls()
     {

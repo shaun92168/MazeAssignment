@@ -9,6 +9,7 @@ TagManager:
   - Pong
   - ScoreText
   - ToggleText
+  - Reset
   layers:
   - Default
   - TransparentFX

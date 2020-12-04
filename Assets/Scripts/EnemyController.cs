@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     {
         // rb = GetComponent<Rigidbody>();
         Player = FindObjectOfType<PlayerController>();
-        rvec = new Vector3(0,1,0);
+        rvec = new Vector3(0, 1, 0);
         movement = new Vector3(0, 0, -1);
     }
 
@@ -46,17 +46,13 @@ public class EnemyController : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if(col.collider.name == "Quad4" || col.collider.name == "Quad1" || col.collider.name == "Quad2" || col.collider.name == "Quad3")
+        if (col.collider.name == "Quad4" || col.collider.name == "Quad1" || col.collider.name == "Quad2" || col.collider.name == "Quad3" 
+            || col.collider.name == "DoorL" || col.collider.name == "DoorR" || col.collider.name == "DoorB")
         {
             rotAmount = Random.Range(90, 270);
             transform.Rotate(rvec, rotAmount);
         }
 
-        if(col.collider.name == "Player")
-        {
-            SceneManager.LoadScene("SampleScene");
-            Debug.Log("player");
-        }
     } 
 
     void OnCollisionStay(Collision col)
