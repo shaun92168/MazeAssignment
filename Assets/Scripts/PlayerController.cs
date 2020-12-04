@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public Canvas escMenu;
     private bool paused = false;
     private IEnumerator coroutine;
+    private System.Random rand = new System.Random();
+    private Vector3[] spawnPositions = new[] { new Vector3(-3.65f, 0.003f, -1.38f), new Vector3(-5.6f, 0.003f, -3.57f), new Vector3(-2.54f, 0.003f, -6.53f), new Vector3(-9.57f, 0.003f, -9.51f),
+    new Vector3(-12.76f, 0.003f, -3.48f), new Vector3(-22.64f, 0.003f, -9.58f), new Vector3(-17.65f, 0.003f, -12.55f) };
+    private int randomSpawn;
 
     public static PlayerController pCtrl;
     public Vector3 playerPos;
@@ -72,6 +76,20 @@ public class PlayerController : MonoBehaviour
         scoreText.enabled = true;
         Walls = GameObject.FindGameObjectsWithTag("Walls");
         WinScreen.SetActive(false);
+    }
+
+    public IEnumerator WaitForRespawn()
+    {
+        yield return new WaitForSeconds(5.0f);
+        enemy = Instantiate(Enemy, spawnPositions[randomSpawn], pCtrl.enemyRot);
+        enemy.GetComponent<EnemyController>().lives = 3;
+    }
+
+    public void RespawnEnemy()
+    {
+        randomSpawn = rand.Next(0, enemy.GetComponent<EnemyController>().spawnPositions.Length);
+        Destroy(enemy);
+        StartCoroutine(WaitForRespawn());
     }
 
     public static void DontDestroyChildOnLoad(Text child)

@@ -14,7 +14,6 @@ public class EnemyController : MonoBehaviour
     public int lives;
     public Vector3[] spawnPositions = new[] { new Vector3(-3.65f, 0.003f, -1.38f), new Vector3(-5.6f, 0.003f, -3.57f), new Vector3(-2.54f, 0.003f, -6.53f), new Vector3(-9.57f, 0.003f, -9.51f),
     new Vector3(-12.76f, 0.003f, -3.48f), new Vector3(-22.64f, 0.003f, -9.58f), new Vector3(-17.65f, 0.003f, -12.55f) };
-    private System.Random rand = new System.Random();
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +28,7 @@ public class EnemyController : MonoBehaviour
     {
         if (lives <= 0)
         {
-            RespawnEnemy();
+            Player.RespawnEnemy();
         }
     }
 
@@ -74,21 +73,6 @@ public class EnemyController : MonoBehaviour
         var y = Random.Range(min, max);
         var z = Random.Range(min, max);
         return new Vector3(x, y, z);
-    }
-
-    public IEnumerator WaitCoroutine()
-    {
-        yield return new WaitForSeconds(5.0f);
-    }
-
-    private void RespawnEnemy()
-    {
-        movement = Vector3.zero;
-        int randomSpawn = rand.Next(0, spawnPositions.Length);
-        this.gameObject.transform.position = spawnPositions[randomSpawn];
-        StartCoroutine(WaitCoroutine());
-        movement = new Vector3(0, 0, -1);
-        lives = 3;
     }
 
     public int getLives()
