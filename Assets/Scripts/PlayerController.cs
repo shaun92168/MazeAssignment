@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public int enemyLives;
     const string fileName = "/mazeSave.dat";
     private bool saveFound = false;
+    private bool allowFootsteps = true;
 
     //audio
     public AudioSource deathSound;
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Reset = GameObject.FindGameObjectWithTag("Reset");
+        allowFootsteps = true;
         if (pCtrl.playerPos != Vector3.zero)
         {
             saveFound = true;
@@ -188,12 +190,18 @@ public class PlayerController : MonoBehaviour
             thrownBall.GetComponent<Rigidbody>().velocity = thrownBall.transform.forward * ballSpeed;
         }
 
-        if (move.x != 0 || move.y != 0)
+        if (allowFootsteps)
         {
-            if (!stepSound.isPlaying)
-                stepSound.Play();
-        }
-        else if (move.x == 0 || move.y == 0)
+            if (move.x != 0 || move.y != 0)
+            {
+                if (!stepSound.isPlaying)
+                    stepSound.Play();
+            }
+            else if (move.x == 0 || move.y == 0)
+            {
+                stepSound.Stop();
+            }
+        } else
         {
             stepSound.Stop();
         }
@@ -210,9 +218,11 @@ public class PlayerController : MonoBehaviour
     {
         if (col.name == "END")
         {
+            allowFootsteps = false;
             WinScreen.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
+            
         }
 
         if (col.name == "DoorB")
