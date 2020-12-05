@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &326802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2922525610163302622, guid: 0cacdafb34395a342b6e619e76663bd6, type: 3}
+  m_PrefabInstance: {fileID: 6324459765620647656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6354729
 GameObject:
   m_ObjectHideFlags: 0
@@ -11441,6 +11446,9 @@ MonoBehaviour:
   dayMusic: {fileID: 971258287}
   nightMusic: {fileID: 21445650}
   musicPlaying: 0
+  player: {fileID: 326802}
+  enemy: {fileID: 0}
+  distanceFromEnemy: 0
 --- !u!4 &1310734641
 Transform:
   m_ObjectHideFlags: 0
