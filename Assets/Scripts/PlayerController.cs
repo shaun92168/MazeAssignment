@@ -24,8 +24,13 @@ public class PlayerController : MonoBehaviour
     public Canvas escMenu;
     private bool paused = false;
     private IEnumerator coroutine;
+    private System.Random rand = new System.Random();
+    private Vector3[] spawnPositions = new[] { new Vector3(-3.65f, 0.003f, -1.38f), new Vector3(-5.6f, 0.003f, -3.57f), new Vector3(-2.54f, 0.003f, -6.53f), new Vector3(-9.57f, 0.003f, -9.51f),
+    new Vector3(-12.76f, 0.003f, -3.48f), new Vector3(-22.64f, 0.003f, -9.58f), new Vector3(-17.65f, 0.003f, -12.55f) };
+    private int randomSpawn;
 
     public static PlayerController pCtrl;
+    public GameObject Reset;
     public Vector3 playerPos;
     public Quaternion playerRot;
     public Vector3 enemyPos;
@@ -35,27 +40,42 @@ public class PlayerController : MonoBehaviour
     const string fileName = "/mazeSave.dat";
 
     //audio
-    public AudioSource shootSound;
+    public AudioSource deathSound;
+    public AudioSource respawnSound;
+    public AudioSource stepSound;
+    public AudioSource wallSound;
 
     private void Awake()
     {
         if (pCtrl == null)
         {
             pCtrl = this;
-            pCtrl.score = 0;
-            pCtrl.enemyLives = 3;
-            pCtrl.playerPos = this.transform.position;
-            pCtrl.playerRot = this.transform.rotation;
-            pCtrl.enemyPos = Enemy.transform.position;
-            pCtrl.enemyRot = Enemy.transform.rotation;
+            //pCtrl.score = 0;
+            //pCtrl.enemyLives = 3;
+            //pCtrl.playerPos = this.transform.position;
+            //pCtrl.playerRot = this.transform.rotation;
+            //pCtrl.enemyPos = Enemy.transform.position;
+            //pCtrl.enemyRot = Enemy.transform.rotation;
             LoadState();
+            Debug.Log("Awake Current Pos: " + this.transform.position);
+            Debug.Log("Save Pos: " + pCtrl.playerPos);
+            Debug.Log("Loaded State");
+        } else
+        {
+            Debug.Log("pCtrl not null");
         }
     }
     void Start()
     {
+        Reset = GameObject.FindGameObjectWithTag("Reset");
+        if (pCtrl.playerPos != Vector3.zero)
+        {
+            Debug.Log("Save Found -> Loading Save");
+            this.transform.position = pCtrl.playerPos;
+            this.transform.rotation = pCtrl.playerRot;
+        }
+        Debug.Log("Start Current Pos: " + this.transform.position);
         escMenu.enabled = false;
-        this.transform.position = pCtrl.playerPos;
-        this.transform.rotation = pCtrl.playerRot;
         enemy = Instantiate(Enemy, pCtrl.enemyPos, pCtrl.enemyRot);
         enemy.GetComponent<EnemyController>().lives = pCtrl.enemyLives;
         //DontDestroyChildOnLoad(toggleText);
@@ -64,6 +84,36 @@ public class PlayerController : MonoBehaviour
         scoreText.enabled = true;
         Walls = GameObject.FindGameObjectsWithTag("Walls");
         WinScreen.SetActive(false);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Reset.GetComponent<Reset>().resetScene();
+        }
+
+        if (collision.collider.name == "Quad4" || collision.collider.name == "Quad1" || collision.collider.name == "Quad2" || collision.collider.name == "Quad3"
+            || collision.collider.name == "DoorL" || collision.collider.name == "DoorR" || collision.collider.name == "DoorB")
+        {
+            wallSound.Play();
+        }
+    }
+
+    public IEnumerator WaitForRespawn()
+    {
+        yield return new WaitForSeconds(5.0f);
+        enemy = Instantiate(Enemy, spawnPositions[randomSpawn], pCtrl.enemyRot);
+        enemy.GetComponent<EnemyController>().lives = 3;
+        respawnSound.Play();
+    }
+
+    public void RespawnEnemy()
+    {
+        deathSound.Play();
+        randomSpawn = rand.Next(0, enemy.GetComponent<EnemyController>().spawnPositions.Length);
+        Destroy(enemy);
+        StartCoroutine(WaitForRespawn());
     }
 
     public static void DontDestroyChildOnLoad(Text child)
@@ -76,6 +126,11 @@ public class PlayerController : MonoBehaviour
         }
 
         GameObject.DontDestroyOnLoad(parentTransform.gameObject);
+    }
+
+    public IEnumerator WaitForFootstep()
+    {
+        yield return new WaitForSeconds(0.3f);
     }
 
     void Update()
@@ -121,9 +176,18 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.timeScale != 0)
         {
-            shootSound.Play();
             GameObject thrownBall = Instantiate(Ball, BallSpawn.position, BallSpawn.rotation);
             thrownBall.GetComponent<Rigidbody>().velocity = thrownBall.transform.forward * ballSpeed;
+        }
+
+        if (move.x != 0 || move.y != 0)
+        {
+            if (!stepSound.isPlaying)
+                stepSound.Play();
+        }
+        else if (move.x == 0 || move.y == 0)
+        {
+            stepSound.Stop();
         }
 
         scoreText.text = "Score: " + pCtrl.score;
@@ -155,6 +219,8 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(col.name);
     }
+
+    
 
     void ToggleWalls()
     {
