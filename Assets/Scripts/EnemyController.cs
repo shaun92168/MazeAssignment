@@ -14,6 +14,13 @@ public class EnemyController : MonoBehaviour
     public int lives;
     public Vector3[] spawnPositions = new[] { new Vector3(-3.65f, 0.003f, -1.38f), new Vector3(-5.6f, 0.003f, -3.57f), new Vector3(-2.54f, 0.003f, -6.53f), new Vector3(-9.57f, 0.003f, -9.51f),
     new Vector3(-12.76f, 0.003f, -3.48f), new Vector3(-22.64f, 0.003f, -9.58f), new Vector3(-17.65f, 0.003f, -12.55f) };
+
+    //audio
+    public GameObject die;
+    public GameObject hitsnd;
+    public AudioSource deathSound;
+    public AudioSource hitSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +28,12 @@ public class EnemyController : MonoBehaviour
         Player = FindObjectOfType<PlayerController>();
         rvec = new Vector3(0, 1, 0);
         movement = new Vector3(0, 0, -1);
+
+        //audio
+        die = GameObject.Find("die");
+        deathSound = die.GetComponent<AudioSource>();
+        hitsnd = GameObject.Find("hitsnd");
+        hitSound = hitsnd.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,6 +42,7 @@ public class EnemyController : MonoBehaviour
         if (lives <= 0)
         {
             Player.RespawnEnemy();
+            deathSound.Play();
         }
     }
 
@@ -54,6 +68,7 @@ public class EnemyController : MonoBehaviour
         }
 
     } 
+
 
     void OnCollisionStay(Collision col)
     {
