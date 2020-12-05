@@ -85,9 +85,6 @@ public class PlayerController : MonoBehaviour
             enemy.gameObject.transform.rotation = pCtrl.enemyRot;
         }
         Debug.Log("Start Current Pos: " + this.transform.position);
-        escMenu.enabled = false;
-        enemy = Instantiate(Enemy, pCtrl.enemyPos, pCtrl.enemyRot);
-        enemy.GetComponent<EnemyController>().lives = pCtrl.enemyLives;
         //DontDestroyChildOnLoad(toggleText);
         //DontDestroyChildOnLoad(scoreText);
         toggleText.enabled = false;

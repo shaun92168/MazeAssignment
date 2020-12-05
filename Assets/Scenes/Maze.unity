@@ -11441,6 +11441,9 @@ MonoBehaviour:
   dayMusic: {fileID: 971258287}
   nightMusic: {fileID: 21445650}
   musicPlaying: 0
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  distanceFromEnemy: 0
 --- !u!4 &1310734641
 Transform:
   m_ObjectHideFlags: 0
@@ -11925,7 +11928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.8595505, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
