@@ -53,11 +53,10 @@ New Features:
 8. Change one of the walls to be a door that the user walks through to play a mini-game. The mini-game should be the Pong game from assignment 1. This should be a different scene, and swap back to the maze scene once the game is over. If the user enters the door again, the Pong mini-game should restart.
 9. The user should be able to save the state of the game, including at least the location of the player and the enemy object and the score from hitting the enemy with a ball.
 10. Play a sound effect whenever the user moves. The sound effect should mimic “walking” or footsteps.
-11. Play a sound effect whenever the user collides with a wall.
-12. Allow the user to start/stop some background music with the press of a mapped button
-13. Now include a second piece of music in your game. One song should be playing during night mode and the other during day mode.
-14. If the fog is turned on, change the volume of the music to half the volume it would be otherwise.
-15. Modulate the music’s volume as the enemy object moves closer (louder music) or farther away.
+11. Allow the user to start/stop some background music with the press of a mapped button
+12. Now include a second piece of music in your game. One song should be playing during night mode and the other during day mode.
+13. If the fog is turned on, change the volume of the music to half the volume it would be otherwise.
+14. Modulate the music’s volume as the enemy object moves closer (louder music) or farther away.
 
 ===========================================================================
 ===========================================================================
