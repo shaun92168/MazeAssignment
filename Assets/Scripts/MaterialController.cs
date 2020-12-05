@@ -218,53 +218,53 @@ public class MaterialController : MonoBehaviour
     {
         if (distanceFromEnemy > 11)
         {
+            nightMusic.volume = 0.05f;
+            dayMusic.volume = 0.05f;
+        }
+        else if (distanceFromEnemy >= 10)
+        {
             nightMusic.volume = 0.1f;
             dayMusic.volume = 0.1f;
         }
-        else if (distanceFromEnemy >= 10)
+        else if (distanceFromEnemy >= 9)
         {
             nightMusic.volume = 0.15f;
             dayMusic.volume = 0.15f;
         }
-        else if (distanceFromEnemy >= 9)
+        else if (distanceFromEnemy >= 8)
         {
             nightMusic.volume = 0.2f;
             dayMusic.volume = 0.2f;
         }
-        else if (distanceFromEnemy >= 8)
+        else if (distanceFromEnemy >= 7)
         {
             nightMusic.volume = 0.25f;
             dayMusic.volume = 0.25f;
         }
-        else if (distanceFromEnemy >= 7)
+        else if (distanceFromEnemy >= 6)
         {
             nightMusic.volume = 0.3f;
             dayMusic.volume = 0.3f;
         }
-        else if (distanceFromEnemy >= 6)
+        else if (distanceFromEnemy >= 5)
         {
             nightMusic.volume = 0.35f;
             dayMusic.volume = 0.35f;
         }
-        else if (distanceFromEnemy >= 5)
+        else if (distanceFromEnemy >= 4)
         {
             nightMusic.volume = 0.4f;
             dayMusic.volume = 0.4f;
         }
-        else if (distanceFromEnemy >= 4)
+        else if (distanceFromEnemy >= 3)
         {
             nightMusic.volume = 0.45f;
             dayMusic.volume = 0.45f;
         }
-        else if (distanceFromEnemy >= 3)
+        else if (distanceFromEnemy >= 2)
         {
             nightMusic.volume = 0.5f;
             dayMusic.volume = 0.5f;
-        }
-        else if (distanceFromEnemy >= 2)
-        {
-            nightMusic.volume = 1.0f;
-            dayMusic.volume = 1.0f;
         }
     }
 }

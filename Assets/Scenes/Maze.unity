@@ -246,7 +246,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4f8b727717b705e48b1ecaebfd0cc1ad, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5326659b75c44a049b1dbb977cfe793a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -8213,7 +8213,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f01c859a6fb0e994ea94e7b53873cff2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 41d6441a53db1db44ab0ef7f85c7e2a2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -17682,6 +17682,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1021721116, guid: 0cacdafb34395a342b6e619e76663bd6, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2922525610163302617, guid: 0cacdafb34395a342b6e619e76663bd6, type: 3}
       propertyPath: WinScreen
       value: 

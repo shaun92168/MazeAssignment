@@ -102,8 +102,7 @@ public class PlayerController : MonoBehaviour
             Reset.GetComponent<Reset>().resetScene();
         }
 
-        if (collision.collider.name == "Quad4" || collision.collider.name == "Quad1" || collision.collider.name == "Quad2" || collision.collider.name == "Quad3"
-            || collision.collider.name == "DoorL" || collision.collider.name == "DoorR" || collision.collider.name == "DoorB")
+        if (collision.collider.tag == "Walls")
         {
             wallSound.Play();
         }
