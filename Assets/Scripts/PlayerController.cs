@@ -69,12 +69,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Save Found -> Loading Save");
         }
         escMenu.enabled = false;
-        enemy = Instantiate(Enemy, pCtrl.enemyPos, pCtrl.enemyRot);
+        enemy = Instantiate(Enemy, Enemy.transform.position, Enemy.transform.rotation);
         if (saveFound)
         {
             this.transform.position = pCtrl.playerPos;
             this.transform.rotation = pCtrl.playerRot;
             enemy.GetComponent<EnemyController>().lives = pCtrl.enemyLives;
+            enemy.gameObject.transform.position = pCtrl.enemyPos;
+            enemy.gameObject.transform.rotation = pCtrl.enemyRot;
         }
         Debug.Log("Start Current Pos: " + this.transform.position);
         //DontDestroyChildOnLoad(toggleText);
