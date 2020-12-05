@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour
     public AudioSource ballSound;
     public GameObject hitsnd;
     public AudioSource hitSound;
+    private bool soundCanPlay = true;
 
     private void Start()
     {
@@ -35,11 +36,19 @@ public class BallController : MonoBehaviour
         if (collision.collider.name == "Quad4" || collision.collider.name == "Quad1" || collision.collider.name == "Quad2" || collision.collider.name == "Quad3"
         || collision.collider.name == "DoorL" || collision.collider.name == "DoorR" || collision.collider.name == "DoorB")
         {
-            ballSound.Play();
+            if (soundCanPlay)
+            {
+                ballSound.Play();
+                soundCanPlay = false;
+            }
         }
         if (collision.collider.tag == "Floor")
         {
-            ballSound.Play();
+            if (soundCanPlay)
+            {
+                ballSound.Play();
+                soundCanPlay = false;
+            }
         }
         if (collision.collider.tag == "Enemy")
         {
