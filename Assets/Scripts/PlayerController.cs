@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public int score;
     public int enemyLives;
     const string fileName = "/mazeSave.dat";
+    private bool saveFound = false;
 
     private void Awake()
     {
@@ -64,14 +65,18 @@ public class PlayerController : MonoBehaviour
         Reset = GameObject.FindGameObjectWithTag("Reset");
         if (pCtrl.playerPos != Vector3.zero)
         {
+            saveFound = true;
             Debug.Log("Save Found -> Loading Save");
-            this.transform.position = pCtrl.playerPos;
-            this.transform.rotation = pCtrl.playerRot;
         }
-        Debug.Log("Start Current Pos: " + this.transform.position);
         escMenu.enabled = false;
         enemy = Instantiate(Enemy, pCtrl.enemyPos, pCtrl.enemyRot);
-        enemy.GetComponent<EnemyController>().lives = pCtrl.enemyLives;
+        if (saveFound)
+        {
+            this.transform.position = pCtrl.playerPos;
+            this.transform.rotation = pCtrl.playerRot;
+            enemy.GetComponent<EnemyController>().lives = pCtrl.enemyLives;
+        }
+        Debug.Log("Start Current Pos: " + this.transform.position);
         //DontDestroyChildOnLoad(toggleText);
         //DontDestroyChildOnLoad(scoreText);
         toggleText.enabled = false;
@@ -82,6 +87,8 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
+
         if (collision.gameObject.tag == "Enemy")
         {
             Reset.GetComponent<Reset>().resetScene();
